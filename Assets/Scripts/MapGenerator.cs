@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
 		int i = 1;
 		foreach(Coordinate spawn in playerSpawns)
 		{
-			CreatePlayer(Map.GetHexagon(spawn.x+offset,spawn.y+offset), i++);
+			CreatePlayer(Map.GetHexagon(spawn.x,spawn.y), i++);
 		}
 	}
 
