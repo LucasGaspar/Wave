@@ -5,58 +5,31 @@ public class MapGenerator : MonoBehaviour
 {
 	public GameObject hexagonPrefab;
 
-	public int rows;
-	public int columns;
-	public float sizeSquare;
-
 	public int radius;
-	public float size;
-
-    private float y;
-
+	public float pieceSize;
 
 	void Start ()
 	{
-        y = transform.position.y;
 		StartCoroutine(GenerateHexagonalMap());
-		//StartCoroutine(GenerateSquareMap());
-	}
-
-	IEnumerator GenerateSquareMap ()
-	{
-		Vector3 position = new Vector3();
-		for (int x = 0; x <= columns; x++)
-		{
-			for (int z = 0; z <= rows; z++)
-			{
-				position.x = x*(sizeSquare);
-				if(x%2 == 0)
-					position.z = z*(sizeSquare);
-				else
-					position.z = z*(sizeSquare)+(sizeSquare/2);
-				GameObject hexagon = (GameObject) Instantiate(hexagonPrefab, position, Quaternion.identity);
-				hexagon.transform.SetParent(transform);
-				yield return new WaitForEndOfFrame();
-			}
-		}
 	}
 
 	IEnumerator GenerateHexagonalMap ()
 	{
+		int maxSize = radius-1;
+		Map.InitializeMap((maxSize*2)+1);
+
 		Vector2 position = new Vector2();
 
 		for (int r = 0; r < radius; r++)
 		{
 			if(r == 0)
 			{
-				Hexagon hexagon = ((GameObject) Instantiate(hexagonPrefab, new Vector3(0,y,0), Quaternion.Euler(new Vector3(0,30,0)))).GetComponent<Hexagon>();
-				hexagon.transform.SetParent(transform);
-				hexagon.SetCoordinates(0,0);
+				CreateHexagon(position, maxSize, maxSize);
 				continue;
 			}
 
 			float degrees = 60;
-			position = (DegreeToVector2(degrees) * (size/2) * r);
+			position = (DegreeToVector2(degrees) * (pieceSize/2) * r);
 			degrees = -60;
 
 			int coordinatesX = r;
@@ -84,12 +57,10 @@ public class MapGenerator : MonoBehaviour
 
 				for (int p = 0; p < r; p++)
 				{
-					Hexagon hexagon = ((GameObject) Instantiate(hexagonPrefab, Vector2ToVector3(position), Quaternion.Euler(new Vector3(0,30,0)))).GetComponent<Hexagon>();;
-					hexagon.transform.SetParent(transform);
+					CreateHexagon(position, coordinatesX+maxSize, coordinatesY+maxSize);
 					yield return new WaitForEndOfFrame();
-					hexagon.SetCoordinates(coordinatesX, coordinatesY);
 
-					position += (DegreeToVector2(degrees) * (size/2));
+					position += (DegreeToVector2(degrees) * (pieceSize/2));
 					coordinatesX += coordinatesXDisplacement;
 					coordinatesY += coordinatesYDisplacement;
 				}
@@ -110,6 +81,14 @@ public class MapGenerator : MonoBehaviour
 
 	Vector3 Vector2ToVector3(Vector2 vector2)
 	{
-		return new Vector3 (vector2.x, y, vector2.y);
+		return new Vector3 (vector2.x, 0, vector2.y);
+	}
+
+	void CreateHexagon(Vector2 position, int coordinatesX, int coordinatesY)
+	{
+		Hexagon hexagon = ((GameObject) Instantiate(hexagonPrefab, Vector2ToVector3(position), Quaternion.Euler(new Vector3(0,30,0)))).GetComponent<Hexagon>();;
+		hexagon.transform.SetParent(transform);
+		hexagon.SetCoordinates(coordinatesX, coordinatesY);
+		Map.AddHexagon(hexagon, coordinatesX, coordinatesY);
 	}
 }

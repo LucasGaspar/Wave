@@ -4,87 +4,62 @@ using System.Collections.Generic;
 
 public class Hexagon : MonoBehaviour
 {
-	float rand;
-	float rand2;
 
-	int xPos;
-	int yPos;
+	public Coordinate coordinates;
 	public TextMesh textmesh;
+
+	float initialYPos;
+	//float jumpForce = 5;
 
 	void Start()
 	{
-		rand = Random.value;
-		rand2 = Random.value;
-	}
-
-	void Update ()
-	{
-		this.transform.position += new Vector3(0,Mathf.Sin((Time.time+rand)*5)*(Time.deltaTime*0.2f*rand2),0);
+		initialYPos = this.transform.position.y;
 	}
 
 	public void SetCoordinates(int x, int y)
 	{
-		this.xPos = x;
-		this.yPos = y;
+		coordinates.x = x;
+		coordinates.y = y;
 		textmesh.text = x+", "+y;
-
-		if(x == -1 && y == 0)
-		{
-			GetRadius(2);
-		}
 	}
 
-	void GetRadius(int radius)
+	public void Jump()
 	{
-		List<Vector2> list = new List<Vector2>();
-		int x;
-		int y;
+		Hashtable hash =  new Hashtable();
+		hash.Add("y", 0.2f);
+		hash.Add("time", 0.1f);
+		hash.Add("easetype", "easeOutSine");
 
-		x = -radius+xPos;
-		for(y = 0+yPos; y <= radius+yPos; y++)
+		iTween.MoveBy(gameObject, hash);
+
+		hash =  new Hashtable();
+		hash.Add("y", -0.2f);
+		hash.Add("time", 0.3f);
+		hash.Add("delay", 0.1f);
+		hash.Add("easetype", "easeInSine");
+
+		iTween.MoveBy(gameObject, hash);
+	}
+
+	IEnumerator Waveee()
+	{
+		int i = 0;
+		List<Hexagon> radiusList;
+		do
 		{
-			list.Add(new Vector2(x,y));
-		}
+			radiusList = Map.GetListOfHexagon(this, i);
+			foreach(Hexagon hexagon in radiusList)
+			{
+				hexagon.Jump();
+			}
 
-		x = radius+xPos;
-		for(y = 0+yPos; y >= -radius+yPos; y--)
-		{
-			list.Add(new Vector2(x,y));
-		}
+			yield return new WaitForSeconds(0.05f);
+			i++;
+		}while(radiusList.Count > 0);
+	}
 
-		y = -radius+yPos;
-		for(x = 0+xPos; x < radius+xPos; x++)
-		{
-			list.Add(new Vector2(x,y));
-		}
-
-		y = radius+yPos;
-		for(x = 0+xPos; x > -radius+xPos; x--)
-		{
-			list.Add(new Vector2(x,y));
-		}
-
-		x = -radius+1+xPos;
-		y = -1+yPos;
-		for(; x < xPos; x++ , y--)
-		{
-			list.Add(new Vector2(x,y));
-		}
-
-		x = radius-1+xPos;
-		y = 1;
-		for(; x > xPos; x-- , y++)
-		{
-			list.Add(new Vector2(x,y));
-		}
-
-		//////////////////////////////////////////
-
-		string s = "";
-		for(int i = 0; i< list.Count; i++)
-		{
-			s = s+list[i]+"  ";
-		}
-		print(s);
+	void OnMouseUpAsButton()
+	{
+		StartCoroutine(Waveee());
 	}
 }
