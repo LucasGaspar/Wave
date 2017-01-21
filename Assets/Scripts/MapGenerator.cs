@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
 
 	Vector3 Vector2ToVector3(Vector2 vector2)
 	{
-		return new Vector3 (vector2.x, 0, vector2.y);
+		return new Vector3 (vector2.x, -3, vector2.y);
 	}
 
 	void CreateHexagon(Vector2 position, int coordinatesX, int coordinatesY)
