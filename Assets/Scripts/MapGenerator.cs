@@ -63,7 +63,6 @@ public class MapGenerator : MonoBehaviour
 				for (int p = 0; p < r; p++)
 				{
 					CreateHexagon(position, coordinatesX+maxSize, coordinatesY+maxSize);
-					yield return null;
 
 					position += (DegreeToVector2(degrees) * (pieceSize/2));
 					coordinatesX += coordinatesXDisplacement;
@@ -72,7 +71,7 @@ public class MapGenerator : MonoBehaviour
 				degrees -= 60;
 			}
 		}
-
+		yield return null;
 		GeneratePlayers(maxSize);
 	}
 
