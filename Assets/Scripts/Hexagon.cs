@@ -25,18 +25,16 @@ public class Hexagon : MonoBehaviour
 
 	public void Jump()
 	{
-		iTween.Stop(gameObject);
-
 		Hashtable hash =  new Hashtable();
 		hash.Add("y", 0.2f);
 		hash.Add("time", 0.05f);
 		hash.Add("easetype", "easeOutSine");
 
-		iTween.MoveBy(gameObject, hash);
+		iTween.MoveAdd(gameObject, hash);
 
 		hash =  new Hashtable();
-		hash.Add("y", -3f);
-		hash.Add("time", 0.07f);
+		hash.Add("y", initialYPos);
+		hash.Add("time", 0.2f);
 		hash.Add("delay", 0.06f);
 		hash.Add("easetype", "easeInSine");
 
