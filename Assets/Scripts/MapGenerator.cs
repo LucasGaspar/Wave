@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
 	public GameObject hexagonPrefab;
+	public GameObject totemPrefab;
+
+	public List<Coordinate> playerSpawns;
 
 	public int radius;
 	public float pieceSize;
@@ -59,7 +63,6 @@ public class MapGenerator : MonoBehaviour
 				for (int p = 0; p < r; p++)
 				{
 					CreateHexagon(position, coordinatesX+maxSize, coordinatesY+maxSize);
-					yield return null;
 
 					position += (DegreeToVector2(degrees) * (pieceSize/2));
 					coordinatesX += coordinatesXDisplacement;
@@ -67,6 +70,17 @@ public class MapGenerator : MonoBehaviour
 				}
 				degrees -= 60;
 			}
+		}
+		yield return null;
+		GeneratePlayers(maxSize);
+	}
+
+	void GeneratePlayers(int offset)
+	{
+		int i = 1;
+		foreach(Coordinate spawn in playerSpawns)
+		{
+			CreatePlayer(Map.GetHexagon(spawn.x,spawn.y), i++);
 		}
 	}
 
@@ -91,5 +105,13 @@ public class MapGenerator : MonoBehaviour
 		hexagon.transform.SetParent(transform);
 		hexagon.SetCoordinates(coordinatesX, coordinatesY);
 		Map.AddHexagon(hexagon, coordinatesX, coordinatesY);
+	}
+
+	void CreatePlayer(Hexagon hexagon, int i)
+	{
+		TotemControl totem = ((GameObject) Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,3,0), Quaternion.identity)).GetComponent<TotemControl>();
+		totem.buttonName = i.ToString();
+		totem.hexagon = hexagon;
+		hexagon.GetComponent<Collider>().enabled = true;
 	}
 }

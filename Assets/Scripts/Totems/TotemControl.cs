@@ -14,8 +14,9 @@ public class TotemControl : MonoBehaviour {
     public string buttonName = "4";
 
     [Header("References")]
-    [SerializeField] Hexagon hexagon;
+	[SerializeField] public Hexagon hexagon;
     Rigidbody rigidbody;
+    ParticleSystem particles;
     [Header("Debug")]
     [SerializeField]    float timer = 0;
     [SerializeField]    bool jumpButtonPressed;
@@ -24,6 +25,7 @@ public class TotemControl : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         rigidbody = GetComponent<Rigidbody>();
+        particles = GetComponentInChildren<ParticleSystem>( );
 	}
 	
 	// Update is called once per frame
@@ -60,10 +62,13 @@ public class TotemControl : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
+		if(hexagon && !isGrounded)
+		{
+			hexagon.Wave( );
+			particles.Play( );
+		}
         isGrounded = true;
         jumping = false;
-        if(hexagon)
-            hexagon.Wave( );
     }
 
 

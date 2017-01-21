@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class Hexagon : MonoBehaviour
 {
-
 	public Coordinate coordinates;
 	public TextMesh textmesh;
 
 	float initialYPos;
-	//float jumpForce = 5;
+	float elevation = 0.2f;
+	float maxElevation = 0.5f;
 
 	void Start()
 	{
@@ -25,20 +25,37 @@ public class Hexagon : MonoBehaviour
 
 	public void Jump()
 	{
-		Hashtable hash =  new Hashtable();
-		hash.Add("y", 0.2f);
-		hash.Add("time", 0.05f);
+		StartCoroutine(JumpCoroutine());
+		/*Hashtable hash =  new Hashtable();
+		float y = this.transform.position.y + elevation;
+		hash.Add("y", ((y > (initialYPos+maxElevation)) ? (initialYPos + maxElevation) : y));
+		hash.Add("time", 0.075f);
 		hash.Add("easetype", "easeOutSine");
+		hash.Add("oncomplete", "Fall");
 
-		iTween.MoveAdd(gameObject, hash);
+		iTween.MoveTo(gameObject, hash);*/
+	}
+	IEnumerator JumpCoroutine()
+	{
+		this.transform.position = this.transform.position + new Vector3(0,elevation,0);
+		yield return new WaitForSeconds(0.05f);
+		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
+		yield return new WaitForSeconds(0.03f);
+		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
+		yield return new WaitForSeconds(0.03f);
+		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
+		yield return new WaitForSeconds(0.03f);
+		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
+	}
 
-		hash =  new Hashtable();
+	void Fall()
+	{
+		/*Hashtable hash =  new Hashtable();
 		hash.Add("y", initialYPos);
-		hash.Add("time", 0.2f);
-		hash.Add("delay", 0.06f);
+		hash.Add("time", 0.1f);
 		hash.Add("easetype", "easeInSine");
 
-		iTween.MoveTo(gameObject, hash);
+		iTween.MoveTo(gameObject, hash);*/
 	}
 
 	IEnumerator WaveCoroutine()
