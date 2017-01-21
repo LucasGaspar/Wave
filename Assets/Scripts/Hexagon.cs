@@ -41,7 +41,7 @@ public class Hexagon : MonoBehaviour
 		iTween.MoveTo(gameObject, hash);
 	}
 
-	IEnumerator Waveee()
+	IEnumerator WaveCoroutine()
 	{
 		int i = 0;
 		List<Hexagon> radiusList;
@@ -58,8 +58,13 @@ public class Hexagon : MonoBehaviour
 		}while(radiusList.Count > 0);
 	}
 
+	public void Wave()
+	{
+		StartCoroutine(WaveCoroutine());
+	}
+
 	void OnMouseUpAsButton()
 	{
-		StartCoroutine(Waveee());
+		Wave();
 	}
 }
