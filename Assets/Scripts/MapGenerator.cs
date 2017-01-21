@@ -78,9 +78,10 @@ public class MapGenerator : MonoBehaviour
 
 	void GeneratePlayers(int offset)
 	{
+		int i = 1;
 		foreach(Coordinate spawn in playerSpawns)
 		{
-			CreatePlayer(Map.GetHexagon(spawn.x+offset,spawn.y+offset));
+			CreatePlayer(Map.GetHexagon(spawn.x+offset,spawn.y+offset), i++);
 		}
 	}
 
@@ -107,8 +108,11 @@ public class MapGenerator : MonoBehaviour
 		Map.AddHexagon(hexagon, coordinatesX, coordinatesY);
 	}
 
-	void CreatePlayer(Hexagon hexagon)
+	void CreatePlayer(Hexagon hexagon, int i)
 	{
-		Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,3,0), Quaternion.identity);
+		TotemControl totem = ((GameObject) Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,3,0), Quaternion.identity)).GetComponent<TotemControl>();
+		totem.buttonName = i.ToString();
+		totem.hexagon = hexagon;
+		hexagon.GetComponent<Collider>().enabled = true;
 	}
 }

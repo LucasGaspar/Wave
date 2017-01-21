@@ -14,7 +14,7 @@ public class TotemControl : MonoBehaviour {
     public string buttonName = "4";
 
     [Header("References")]
-    [SerializeField] Hexagon hexagon;
+	[SerializeField] public Hexagon hexagon;
     Rigidbody rigidbody;
     ParticleSystem particles;
     [Header("Debug")]
@@ -62,11 +62,13 @@ public class TotemControl : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
+		if(hexagon && !isGrounded)
+		{
+			hexagon.Wave( );
+			particles.Play( );
+		}
         isGrounded = true;
         jumping = false;
-        particles.Play( );
-        if(hexagon)
-            hexagon.Wave( );
     }
 
 

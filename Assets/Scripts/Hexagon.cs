@@ -8,7 +8,8 @@ public class Hexagon : MonoBehaviour
 	public TextMesh textmesh;
 
 	float initialYPos;
-	//float jumpForce = 5;
+	float elevation = 0.2f;
+	float maxElevation = 0.4f;
 
 	void Start()
 	{
@@ -25,8 +26,9 @@ public class Hexagon : MonoBehaviour
 	public void Jump()
 	{
 		Hashtable hash =  new Hashtable();
-		hash.Add("y", this.transform.position.y+0.2f);
-		hash.Add("time", 0.05f);
+		float y = this.transform.position.y + elevation;
+		hash.Add("y", ((y > maxElevation) ? maxElevation : y));
+		hash.Add("time", 0.075f);
 		hash.Add("easetype", "easeOutSine");
 		hash.Add("oncomplete", "Fall");
 
@@ -37,7 +39,7 @@ public class Hexagon : MonoBehaviour
 	{
 		Hashtable hash =  new Hashtable();
 		hash.Add("y", initialYPos);
-		hash.Add("time", 0.2f);
+		hash.Add("time", 0.1f);
 		hash.Add("easetype", "easeInSine");
 
 		iTween.MoveTo(gameObject, hash);
