@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Hexagon : MonoBehaviour
 {
-
 	public Coordinate coordinates;
 	public TextMesh textmesh;
 
@@ -26,16 +25,19 @@ public class Hexagon : MonoBehaviour
 	public void Jump()
 	{
 		Hashtable hash =  new Hashtable();
-		hash.Add("y", 0.2f);
+		hash.Add("y", this.transform.position.y+0.2f);
 		hash.Add("time", 0.05f);
 		hash.Add("easetype", "easeOutSine");
+		hash.Add("oncomplete", "Fall");
 
-		iTween.MoveAdd(gameObject, hash);
+		iTween.MoveTo(gameObject, hash);
+	}
 
-		hash =  new Hashtable();
+	void Fall()
+	{
+		Hashtable hash =  new Hashtable();
 		hash.Add("y", initialYPos);
 		hash.Add("time", 0.2f);
-		hash.Add("delay", 0.06f);
 		hash.Add("easetype", "easeInSine");
 
 		iTween.MoveTo(gameObject, hash);

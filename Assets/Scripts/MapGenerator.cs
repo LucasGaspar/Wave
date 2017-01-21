@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
 	public GameObject hexagonPrefab;
+	public GameObject totemPrefab;
+
+	public List<Coordinate> playerSpawns;
 
 	public int radius;
 	public float pieceSize;
@@ -68,6 +72,16 @@ public class MapGenerator : MonoBehaviour
 				degrees -= 60;
 			}
 		}
+
+		GeneratePlayers(maxSize);
+	}
+
+	void GeneratePlayers(int offset)
+	{
+		foreach(Coordinate spawn in playerSpawns)
+		{
+			CreatePlayer(Map.GetHexagon(spawn.x+offset,spawn.y+offset));
+		}
 	}
 
 	Vector2 RadianToVector2(float radian)
@@ -91,5 +105,10 @@ public class MapGenerator : MonoBehaviour
 		hexagon.transform.SetParent(transform);
 		hexagon.SetCoordinates(coordinatesX, coordinatesY);
 		Map.AddHexagon(hexagon, coordinatesX, coordinatesY);
+	}
+
+	void CreatePlayer(Hexagon hexagon)
+	{
+		Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,3,0), Quaternion.identity);
 	}
 }

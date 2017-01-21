@@ -83,12 +83,18 @@ public class Map : MonoBehaviour
 
 	static void TryAddToList(List<Hexagon> list, int x, int y)
 	{
+		if(GetHexagon(x, y) == null)
+			return;
+		list.Add(GetHexagon(x, y));
+	}
+
+	public static Hexagon GetHexagon(int x, int y)
+	{
 		if(x < 0 || y < 0)
-			return;
+			return null;
 		if(x >= map.GetLength(0) || y >= map.GetLength(0))
-			return;
-		if(map[x,y] == null)
-			return;
-		list.Add(map[x,y]);
+			return null;
+		
+		return map[x,y];
 	}
 }
