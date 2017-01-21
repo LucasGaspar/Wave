@@ -12,9 +12,12 @@ public class MapGenerator : MonoBehaviour
 	public int radius;
 	public float size;
 
+    private float y;
+
 
 	void Start ()
 	{
+        y = transform.position.y;
 		StartCoroutine(GenerateHexagonalMap());
 		//StartCoroutine(GenerateSquareMap());
 	}
@@ -46,7 +49,7 @@ public class MapGenerator : MonoBehaviour
 		{
 			if(r == 0)
 			{
-				Hexagon hexagon = ((GameObject) Instantiate(hexagonPrefab, position, Quaternion.Euler(new Vector3(0,30,0)))).GetComponent<Hexagon>();
+				Hexagon hexagon = ((GameObject) Instantiate(hexagonPrefab, new Vector3(0,y,0), Quaternion.Euler(new Vector3(0,30,0)))).GetComponent<Hexagon>();
 				hexagon.transform.SetParent(transform);
 				hexagon.SetCoordinates(0,0);
 				continue;
@@ -107,6 +110,6 @@ public class MapGenerator : MonoBehaviour
 
 	Vector3 Vector2ToVector3(Vector2 vector2)
 	{
-		return new Vector3 (vector2.x, 0, vector2.y);
+		return new Vector3 (vector2.x, y, vector2.y);
 	}
 }
