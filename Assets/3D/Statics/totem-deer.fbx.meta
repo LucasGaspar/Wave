@@ -1,37 +1,55 @@
 fileFormatVersion: 2
-guid: 8d747515331af7a4d95d80b724d6256e
-timeCreated: 1485108739
+guid: a43e7272138aa844a870f1f0b87b6f75
+timeCreated: 1485127497
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pCube5
-    100002: pCube6
-    100004: pCylinder11
-    100006: pCylinder12
-    100008: pCylinder13
-    100010: pCylinder14
-    100012: //RootNode
-    100014: transform32
-    100016: transform33
-    100018: transform34
-    100020: transform35
-    100022: transform36
-    400000: pCube5
-    400002: pCube6
-    400004: pCylinder11
-    400006: pCylinder12
-    400008: pCylinder13
-    400010: pCylinder14
-    400012: //RootNode
-    400014: transform32
-    400016: transform33
-    400018: transform34
-    400020: transform35
-    400022: transform36
-    2300000: pCylinder14
-    3300000: pCylinder14
-    4300000: pCylinder14
+    100000: group3
+    100002: pasted__pCube5
+    100004: pCube8
+    100006: pCylinder23
+    100008: pCylinder24
+    100010: pCylinder25
+    100012: pCylinder26
+    100014: polySurface33
+    100016: polySurface34
+    100018: polySurface35
+    100020: polySurface36
+    100022: //RootNode
+    100024: transform45
+    100026: transform46
+    100028: transform47
+    100030: transform48
+    100032: transform49
+    100034: transform50
+    100036: transform51
+    100038: transform52
+    100040: transform53
+    400000: group3
+    400002: pasted__pCube5
+    400004: pCube8
+    400006: pCylinder23
+    400008: pCylinder24
+    400010: pCylinder25
+    400012: pCylinder26
+    400014: polySurface33
+    400016: polySurface34
+    400018: polySurface35
+    400020: polySurface36
+    400022: //RootNode
+    400024: transform45
+    400026: transform46
+    400028: transform47
+    400030: transform48
+    400032: transform49
+    400034: transform50
+    400036: transform51
+    400038: transform52
+    400040: transform53
+    2300000: pCylinder26
+    3300000: pCylinder26
+    4300000: pCylinder26
   materials:
     importMaterials: 0
     materialName: 0
