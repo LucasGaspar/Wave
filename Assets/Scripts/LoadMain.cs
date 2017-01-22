@@ -6,6 +6,12 @@ public class LoadMain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        Invoke( "LoadNext", 14 );
+    }
+
+    void LoadNext()
+    {
         Application.LoadLevel( "Game" );
     }
 	
