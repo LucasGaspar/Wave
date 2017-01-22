@@ -40,11 +40,11 @@ public class Hexagon : MonoBehaviour
 		this.transform.position = this.transform.position + new Vector3(0,elevation,0);
 		yield return new WaitForSeconds(0.05f);
 		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
-		yield return new WaitForSeconds(0.03f);
+		yield return new WaitForSeconds(0.02f);
 		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
-		yield return new WaitForSeconds(0.03f);
+		yield return new WaitForSeconds(0.02f);
 		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
-		yield return new WaitForSeconds(0.03f);
+		yield return new WaitForSeconds(0.02f);
 		this.transform.position = this.transform.position - new Vector3(0,elevation*0.25f,0);
 	}
 
@@ -70,7 +70,7 @@ public class Hexagon : MonoBehaviour
 				hexagon.Jump();
 			}
 
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForSeconds(0.03f);
 			i++;
 		}while(radiusList.Count > 0);
 	}
