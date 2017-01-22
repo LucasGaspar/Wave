@@ -27,17 +27,19 @@ public class EndScreen : MonoBehaviour {
 
     public void ShowWinner()
     {
+		AudioManager.SetMusicVolume(0.25f);
+
         if(showWinner)
         {
             winnerText.gameObject.SetActive( true );
-            Invoke( "Restart", 5 );
+            Invoke( "Restart", 4 );
             showWinner = false;
             audioSource.clip = winSound;
             audioSource.Play( );
         }
         else
         {
-            winnerText.text = "Tie T_T";
+            winnerText.text = "Draw!";
 
             audioSource.clip = loseClip;
             audioSource.Play( );
