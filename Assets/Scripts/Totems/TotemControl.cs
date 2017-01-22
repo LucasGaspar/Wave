@@ -16,12 +16,14 @@ public class TotemControl : MonoBehaviour {
 
     [Header("References")]
 	[SerializeField] public Hexagon hexagon;
+	[SerializeField] public GameObject[] skins;
 	[SerializeField] public AudioClip jumpSound;
 	[SerializeField] public AudioClip landSound;
 	[SerializeField] public AudioClip dieSound;
     Rigidbody rigidbody;
     ParticleSystem particles;
     [Header("Debug")]
+	int currentSkin = 0;
     [SerializeField]    float timer = 0;
     [SerializeField]    bool jumpButtonPressed;
     [SerializeField]    bool jumping;
@@ -34,6 +36,7 @@ public class TotemControl : MonoBehaviour {
         particles = GetComponentInChildren<ParticleSystem>( );
         StartUpCounter.OnStart += SetWave;
         AliveTotems++;
+		ChangeSkin();
     }
 	
     void OnDestroy()
@@ -75,6 +78,9 @@ public class TotemControl : MonoBehaviour {
             rigidbody.AddForce(initForce,ForceMode.Impulse);
 			iTween.ScaleTo(gameObject, new Vector3(1,1.1f,1), 1f);
 			AudioManager.ReproduceSound(jumpSound);
+
+			if(!canWave)
+				ChangeSkin();
         }
 
         if(jumping && jumpButtonPressed )
@@ -116,4 +122,25 @@ public class TotemControl : MonoBehaviour {
 		AudioManager.ReproduceSound(dieSound);
         Destroy( this );
     }
+
+	int SelectNewSkin()
+	{
+		if(skins.Length <= 1)
+		{
+			return 0;
+		}
+
+		int newSkin;
+		do{newSkin = Random.Range(0,skins.Length);}
+		while(newSkin == currentSkin);
+
+		return newSkin;
+	}
+
+	void ChangeSkin()
+	{
+		skins[currentSkin].SetActive(false);
+		currentSkin = SelectNewSkin();
+		skins[currentSkin].SetActive(true);
+	}
 }
