@@ -6,10 +6,39 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pCube1
+    100004: pCylinder2
+    100006: pCylinder4
+    100008: pCylinder5
+    100010: pCylinder6
+    100012: pCylinder7
+    100014: pCylinder8
+    100016: transform1
+    100018: transform2
+    100020: transform3
+    100022: transform4
+    100024: transform5
+    100026: transform6
     400000: //RootNode
+    400002: pCube1
+    400004: pCylinder2
+    400006: pCylinder4
+    400008: pCylinder5
+    400010: pCylinder6
+    400012: pCylinder7
+    400014: pCylinder8
+    400016: transform1
+    400018: transform2
+    400020: transform3
+    400022: transform4
+    400024: transform5
+    400026: transform6
     2300000: //RootNode
+    2300002: pCylinder8
     3300000: //RootNode
+    3300002: pCylinder8
     4300000: pCylinder3
+    4300002: pCylinder8
   materials:
     importMaterials: 1
     materialName: 0
@@ -31,10 +60,10 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 20
     meshCompression: 3
     addColliders: 0
     importBlendShapes: 0
