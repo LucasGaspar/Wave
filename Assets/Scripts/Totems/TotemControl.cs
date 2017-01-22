@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TotemControl : MonoBehaviour {
 
-
-    
+    static int AliveTotems = 0;
+    public static UnityAction OnLastTotem;
 
     [SerializeField]    float jumpTime = .5f;
     [SerializeField]    Vector3 jumpVector = Vector3.up * 15;
@@ -22,14 +23,37 @@ public class TotemControl : MonoBehaviour {
     [SerializeField]    bool jumpButtonPressed;
     [SerializeField]    bool jumping;
     [SerializeField]    bool isGrounded;
+    [SerializeField]    bool canWave = false;
+
 	// Use this for initialization
 	void Awake () {
         rigidbody = GetComponent<Rigidbody>();
         particles = GetComponentInChildren<ParticleSystem>( );
-	}
+        StartUpCounter.OnStart += SetWave;
+        AliveTotems++;
+    }
 	
-	// Update is called once per frame
-	void Update () {
+    void OnDestroy()
+    {
+        StartUpCounter.OnStart -= SetWave;
+        AliveTotems--;
+        if( AliveTotems <= 1 )
+        {
+            if(OnLastTotem != null)
+                 OnLastTotem( );
+        }
+            
+
+    }
+
+    void SetWave()
+    {
+        canWave = true;
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         jumpButtonPressed =  Input.GetButton(buttonName);
         if(transform.position.y < .15f &&  hexagon.transform.localPosition.y > .15f )
         {
@@ -68,7 +92,8 @@ public class TotemControl : MonoBehaviour {
     {
 		if(hexagon && !isGrounded)
 		{
-			hexagon.Wave( );
+            if( canWave )
+                hexagon.Wave( );
 			particles.Play( );
 		}
 
