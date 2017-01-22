@@ -16,7 +16,7 @@ public class Lighting : MonoBehaviour {
 	void Start () {
 		transform.position = Vector3.zero;
 		hour = System.DateTime.Now.Hour;
-		//hour = 22;
+		hour = 22;
 		int angle = hour * 15;
 		angle -= 90;
 		gameObject.transform.localEulerAngles = new Vector3 (angle, 0, 0);
@@ -32,7 +32,7 @@ public class Lighting : MonoBehaviour {
 		}
 
 		if (hour >= 18 || hour < 7) {
-			GetComponent<Light> ().intensity = 0.2f;
+			GetComponent<Light> ().intensity = 0.1f;
 			nightLight.enabled = true;
 		}
 	}

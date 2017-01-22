@@ -76,7 +76,7 @@ public class ScoreManager : MonoBehaviour {
 				p4Score++;
 				break;
 			case "5":
-				p6Score++;
+				p5Score++;
 				break;
 			case "6":
 				p6Score++;
