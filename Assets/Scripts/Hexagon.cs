@@ -8,7 +8,7 @@ public class Hexagon : MonoBehaviour
 	public TextMesh textmesh;
 
 	//float initialYPos;
-	float elevation = 0.2f;
+	float elevation = 0.3f;
 	//float maxElevation = 0.5f;
 
 	/*void Start()
