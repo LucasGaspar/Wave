@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour {
 	public static ScoreManager SM;
 
 	public GameObject[] totems;
+	public bool firstPlay = true;
 
 	public int p1Score = 0;
 	public int p2Score = 0;
@@ -53,7 +54,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void UpdateScores(){
-		print ("get totems");
+		firstPlay = false;
 		Invoke ("GetRemainingTotems", 2);
 	}
 

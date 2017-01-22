@@ -43,26 +43,51 @@ public class TotemControl : MonoBehaviour {
     }
 
 	void Start(){
-		switch (buttonName) {
-		case "1":
-			myScore.text = ScoreManager.SM.p1Score.ToString();
-			break;
-		case "2":
-			myScore.text = ScoreManager.SM.p2Score.ToString();
-			break;
-		case "3":
-			myScore.text = ScoreManager.SM.p3Score.ToString();
-			break;
-		case "4":
-			myScore.text = ScoreManager.SM.p4Score.ToString();
-			break;
-		case "5":
-			myScore.text = ScoreManager.SM.p5Score.ToString();
-			break;
-		case "6":
-			myScore.text = ScoreManager.SM.p6Score.ToString();
-			break;
+		if (ScoreManager.SM.firstPlay) {
+			switch (buttonName) {
+			case "1":
+				myScore.text = "W";
+				break;
+			case "2":
+				myScore.text = "A";
+				break;
+			case "3":
+				myScore.text = "Z";
+				break;
+			case "4":
+				myScore.text = "M";
+				break;
+			case "5":
+				myScore.text = "K";
+				break;
+			case "6":
+				myScore.text = "I";
+				break;
+			}
+			//ScoreManager.SM.firstPlay = false;
+		} else {
+			switch (buttonName) {
+			case "1":
+				myScore.text = ScoreManager.SM.p1Score.ToString();
+				break;
+			case "2":
+				myScore.text = ScoreManager.SM.p2Score.ToString();
+				break;
+			case "3":
+				myScore.text = ScoreManager.SM.p3Score.ToString();
+				break;
+			case "4":
+				myScore.text = ScoreManager.SM.p4Score.ToString();
+				break;
+			case "5":
+				myScore.text = ScoreManager.SM.p5Score.ToString();
+				break;
+			case "6":
+				myScore.text = ScoreManager.SM.p6Score.ToString();
+				break;
+			}
 		}
+
 
 		ScoreManager.SM.UpdateKing ();
 		if (buttonName == ScoreManager.SM.currentKing) {
