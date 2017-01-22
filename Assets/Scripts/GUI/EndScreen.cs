@@ -7,10 +7,16 @@ public class EndScreen : MonoBehaviour {
 
 	[SerializeField] Text winnerText;
     [SerializeField] int restartTime = 5;
+    [SerializeField]
+    AudioClip winSound;
+    [SerializeField]
+    AudioClip loseClip;
+    AudioSource audioSource;
     bool showWinner = true;
     void Awake()
     {
         TotemControl.OnLastTotem += ShowWinner;
+        audioSource = GetComponent<AudioSource>( );
     }
 
     void OnDestroy()
@@ -25,10 +31,15 @@ public class EndScreen : MonoBehaviour {
             winnerText.gameObject.SetActive( true );
             Invoke( "Restart", 5 );
             showWinner = false;
+            audioSource.clip = winSound;
+            audioSource.Play( );
         }
         else
         {
             winnerText.text = "Tie T_T";
+
+            audioSource.clip = loseClip;
+            audioSource.Play( );
         }
 
     }
