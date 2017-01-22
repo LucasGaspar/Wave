@@ -36,6 +36,8 @@ public class Meteorite : MonoBehaviour {
 			GameObject explosionClone = Instantiate (explosion, new Vector3(other.transform.position.x, 0, other.transform.position.z), Quaternion.identity) as GameObject;
 			explosionClone.GetComponent<SelfDestroy> ().DestroyMe ();
 			hexas [0].Wave ();
+			hexas [0].Wave ();
+			hexas [0].Wave ();
 //			Hexagon hex = other.GetComponent<Hexagon> ();
 //			hex.Wave ();
 			Destroy (gameObject);
