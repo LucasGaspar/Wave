@@ -23,7 +23,7 @@ public class Meteorite : MonoBehaviour {
 		float distCovered = (Time.time - startTime) * speed;
 		float fracJourney = distCovered / journeyLength;
 		transform.position = Vector3.Lerp(spawnPoint.position, targetPoint[rand].position, fracJourney);
-		transform.Rotate (Vector3.right * Time.deltaTime * 50);
+		transform.Rotate (Vector3.right * Time.deltaTime * 100);
 	}
 
 	void CreateWave(){
