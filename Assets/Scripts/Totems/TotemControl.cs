@@ -41,6 +41,7 @@ public class TotemControl : MonoBehaviour {
 	
     void OnDestroy()
     {
+		
         StartUpCounter.OnStart -= SetWave;
         AliveTotems--;
         if( AliveTotems <= 1 )
