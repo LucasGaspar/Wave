@@ -11,8 +11,9 @@ public class Meteorite : MonoBehaviour {
 	float startTime;
 	float journeyLength;
 	int rand = 0;
-
+	Hexagon[] hexas;
 	void Start() {
+		hexas = GameObject.Find ("Generator").GetComponentsInChildren<Hexagon> ();
 		spawnPoint = GameObject.Find ("SpawnPoint").transform;
 		startTime = Time.time;
 		rand = Random.Range (0, targetPoint.Length);
@@ -25,13 +26,18 @@ public class Meteorite : MonoBehaviour {
 		transform.Rotate (Vector3.right * Time.deltaTime * 50);
 	}
 
+	void CreateWave(){
+	
+	}
+
 	void OnTriggerEnter(Collider other){
 		print (other.transform.name);
-		if ( other.transform.name == "hex-smooth(Clone)") {
+		if ( other.transform.tag == "target") {
 			GameObject explosionClone = Instantiate (explosion, new Vector3(other.transform.position.x, 0, other.transform.position.z), Quaternion.identity) as GameObject;
 			explosionClone.GetComponent<SelfDestroy> ().DestroyMe ();
-			Hexagon hex = other.GetComponent<Hexagon> ();
-			hex.Wave ();
+			hexas [0].Wave ();
+//			Hexagon hex = other.GetComponent<Hexagon> ();
+//			hex.Wave ();
 			Destroy (gameObject);
 		}
 	}
