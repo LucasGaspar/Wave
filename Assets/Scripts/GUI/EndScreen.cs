@@ -13,6 +13,7 @@ public class EndScreen : MonoBehaviour {
     AudioClip loseClip;
     AudioSource audioSource;
     bool showWinner = true;
+
     void Awake()
     {
         TotemControl.OnLastTotem += ShowWinner;

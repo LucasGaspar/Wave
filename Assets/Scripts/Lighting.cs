@@ -32,7 +32,7 @@ public class Lighting : MonoBehaviour {
 		}
 
 		if (hour >= 18 || hour < 7) {
-			GetComponent<Light> ().enabled = false;
+			GetComponent<Light> ().intensity = 0.2f;
 			nightLight.enabled = true;
 		}
 	}
