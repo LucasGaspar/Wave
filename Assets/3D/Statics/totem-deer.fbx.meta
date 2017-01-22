@@ -1,44 +1,55 @@
 fileFormatVersion: 2
-guid: 72d993ad86ca85840b7698cdee1c9683
-timeCreated: 1485036147
+guid: a43e7272138aa844a870f1f0b87b6f75
+timeCreated: 1485127497
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: pCube1
-    100004: pCylinder2
-    100006: pCylinder4
-    100008: pCylinder5
-    100010: pCylinder6
-    100012: pCylinder7
-    100014: pCylinder8
-    100016: transform1
-    100018: transform2
-    100020: transform3
-    100022: transform4
-    100024: transform5
-    100026: transform6
-    400000: //RootNode
-    400002: pCube1
-    400004: pCylinder2
-    400006: pCylinder4
-    400008: pCylinder5
-    400010: pCylinder6
-    400012: pCylinder7
-    400014: pCylinder8
-    400016: transform1
-    400018: transform2
-    400020: transform3
-    400022: transform4
-    400024: transform5
-    400026: transform6
-    2300000: //RootNode
-    2300002: pCylinder8
-    3300000: //RootNode
-    3300002: pCylinder8
-    4300000: pCylinder3
-    4300002: pCylinder8
+    100000: group3
+    100002: pasted__pCube5
+    100004: pCube8
+    100006: pCylinder23
+    100008: pCylinder24
+    100010: pCylinder25
+    100012: pCylinder26
+    100014: polySurface33
+    100016: polySurface34
+    100018: polySurface35
+    100020: polySurface36
+    100022: //RootNode
+    100024: transform45
+    100026: transform46
+    100028: transform47
+    100030: transform48
+    100032: transform49
+    100034: transform50
+    100036: transform51
+    100038: transform52
+    100040: transform53
+    400000: group3
+    400002: pasted__pCube5
+    400004: pCube8
+    400006: pCylinder23
+    400008: pCylinder24
+    400010: pCylinder25
+    400012: pCylinder26
+    400014: polySurface33
+    400016: polySurface34
+    400018: polySurface35
+    400020: polySurface36
+    400022: //RootNode
+    400024: transform45
+    400026: transform46
+    400028: transform47
+    400030: transform48
+    400032: transform49
+    400034: transform50
+    400036: transform51
+    400038: transform52
+    400040: transform53
+    2300000: pCylinder26
+    3300000: pCylinder26
+    4300000: pCylinder26
   materials:
     importMaterials: 0
     materialName: 0

@@ -30,6 +30,9 @@ public class TotemControl : MonoBehaviour {
     [SerializeField]    bool isGrounded;
     [SerializeField]    bool canWave = false;
 
+	public TextMesh myScore;
+	public GameObject crown;
+
 	// Use this for initialization
 	void Awake () {
         rigidbody = GetComponent<Rigidbody>();
@@ -38,7 +41,41 @@ public class TotemControl : MonoBehaviour {
         AliveTotems++;
 		ChangeSkin();
     }
-	
+
+	void Start(){
+		switch (buttonName) {
+		case "1":
+			myScore.text = ScoreManager.SM.p1Score.ToString();
+			break;
+		case "2":
+			myScore.text = ScoreManager.SM.p2Score.ToString();
+			break;
+		case "3":
+			myScore.text = ScoreManager.SM.p3Score.ToString();
+			break;
+		case "4":
+			myScore.text = ScoreManager.SM.p4Score.ToString();
+			break;
+		case "5":
+			myScore.text = ScoreManager.SM.p5Score.ToString();
+			break;
+		case "6":
+			myScore.text = ScoreManager.SM.p6Score.ToString();
+			break;
+		}
+
+		ScoreManager.SM.UpdateKing ();
+		if (buttonName == ScoreManager.SM.currentKing) {
+			crown.SetActive (true);
+		}
+
+		Invoke ("DisableScore", 5);
+	}
+
+	void DisableScore(){
+		myScore.text = "";
+	}
+
     void OnDestroy()
     {
 		

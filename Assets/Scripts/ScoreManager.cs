@@ -15,6 +15,8 @@ public class ScoreManager : MonoBehaviour {
 	public int p5Score = 0;
 	public int p6Score = 0;
 
+	public string currentKing = "0";
+
 	void Awake(){
 		if (SM == null) {
 			SM = this;
@@ -23,6 +25,31 @@ public class ScoreManager : MonoBehaviour {
 			Destroy (this);
 		}
 
+	}
+
+	public void UpdateKing(){
+		print ("1 " + p1Score);
+		print ("2 " + p2Score);
+		print ("3 " + p3Score);
+		print ("4 " + p4Score);
+		print ("5 " + p5Score);
+		print ("6 " + p6Score);
+
+		if (p1Score > p2Score && p1Score > p3Score && p1Score > p4Score && p1Score > p5Score && p1Score > p6Score) {
+			currentKing = "1";
+		} else if (p2Score > p1Score && p2Score > p3Score && p2Score > p4Score && p2Score > p5Score && p2Score > p6Score) {
+			currentKing = "2";
+		} else if (p3Score > p1Score && p3Score > p2Score && p3Score > p4Score && p3Score > p5Score && p3Score > p6Score) {
+			currentKing = "3";
+		} else if (p4Score > p1Score && p4Score > p2Score && p4Score > p3Score && p4Score > p5Score && p4Score > p6Score) {
+			currentKing = "4";
+		} else if (p5Score > p1Score && p5Score > p2Score && p5Score > p3Score && p5Score > p4Score && p5Score > p6Score) {
+			currentKing = "5";
+		} else if (p6Score > p1Score && p6Score > p2Score && p6Score > p3Score && p6Score > p4Score && p6Score > p5Score) {
+			currentKing = "5";
+		} else {
+			currentKing = "0";
+		}
 	}
 
 	public void UpdateScores(){
@@ -49,7 +76,7 @@ public class ScoreManager : MonoBehaviour {
 				p4Score++;
 				break;
 			case "5":
-				p6Score++;
+				p5Score++;
 				break;
 			case "6":
 				p6Score++;
