@@ -10,6 +10,9 @@ public class StartUpCounter : MonoBehaviour {
     [SerializeField]    string startText = "Go";
     [SerializeField]    int seconds = 5;
 
+	[SerializeField]    AudioClip countdownSound;
+	[SerializeField]    AudioClip startSound;
+
     Text counterText;
 
     float currentTimer = 0;
@@ -28,11 +31,13 @@ public class StartUpCounter : MonoBehaviour {
             if(seconds > 0)
             {
                 counterText.text = seconds.ToString( );
+				AudioManager.ReproduceSound(countdownSound);
             }
             else if(seconds == 0)
             {
                 currentTimer = .5f;
                 counterText.text = startText;
+				AudioManager.ReproduceSound(startSound);
                 OnStart.Invoke( );
             }
             else
