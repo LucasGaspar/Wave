@@ -7,7 +7,7 @@ public class LoadMain : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        Invoke( "LoadNext", 14 );
+        Invoke( "LoadNext", 11 );
     }
 
     void LoadNext()
