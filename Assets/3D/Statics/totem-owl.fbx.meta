@@ -41,7 +41,7 @@ ModelImporter:
     3300000: pCylinder17
     4300000: pCylinder17
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

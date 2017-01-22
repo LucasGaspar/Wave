@@ -1,55 +1,43 @@
 fileFormatVersion: 2
-guid: b55bb4678fdc04c40b36ddfb92efc4ca
-timeCreated: 1485022033
-licenseType: Free
+guid: 97d110f8fa7d15646a348f5206214aa7
+timeCreated: 1485122577
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: pCube2
-    100004: pCube3
-    100006: pCube4
-    100008: pCylinder10
-    100010: pCylinder9
-    100012: polySurface16
-    100014: polySurface17
-    100016: polySurface17 1
-    100018: polySurface18
-    100020: polySurface7
-    100022: transform24
-    100024: transform25
-    100026: transform26
-    100028: transform27
-    100030: transform28
-    100032: transform29
-    100034: transform30
-    100036: transform31
-    400000: //RootNode
-    400002: pCube2
-    400004: pCube3
-    400006: pCube4
-    400008: pCylinder10
-    400010: pCylinder9
-    400012: polySurface16
-    400014: polySurface17
-    400016: polySurface17 1
-    400018: polySurface18
-    400020: polySurface7
-    400022: transform24
-    400024: transform25
-    400026: transform26
-    400028: transform27
-    400030: transform28
-    400032: transform29
-    400034: transform30
-    400036: transform31
-    2300000: //RootNode
-    2300002: pCube4
-    3300000: //RootNode
-    3300002: pCube4
-    4300000: pCylinder1
-    4300002: pCube4
-    9500000: //RootNode
+    100000: group2
+    100002: pasted__pCylinder8
+    100004: pasted__polySurface27
+    100006: pasted__polySurface28
+    100008: pasted__transform39
+    100010: pCylinder18
+    100012: pCylinder19
+    100014: pCylinder20
+    100016: pCylinder21
+    100018: //RootNode
+    100020: transform40
+    100022: transform41
+    100024: transform42
+    100026: transform43
+    100028: transform44
+    400000: group2
+    400002: pasted__pCylinder8
+    400004: pasted__polySurface27
+    400006: pasted__polySurface28
+    400008: pasted__transform39
+    400010: pCylinder18
+    400012: pCylinder19
+    400014: pCylinder20
+    400016: pCylinder21
+    400018: //RootNode
+    400020: transform40
+    400022: transform41
+    400024: transform42
+    400026: transform43
+    400028: transform44
+    2300000: pCylinder21
+    3300000: pCylinder21
+    4300000: pCylinder21
   materials:
     importMaterials: 0
     materialName: 0
@@ -71,7 +59,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 20
@@ -90,8 +78,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 0
   copyAvatar: 0

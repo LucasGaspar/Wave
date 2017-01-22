@@ -1,55 +1,15 @@
 fileFormatVersion: 2
-guid: b55bb4678fdc04c40b36ddfb92efc4ca
-timeCreated: 1485022033
-licenseType: Free
+guid: 0f63b3c2ac072b143bbbe38300cecb4e
+timeCreated: 1485122577
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube2
-    100004: pCube3
-    100006: pCube4
-    100008: pCylinder10
-    100010: pCylinder9
-    100012: polySurface16
-    100014: polySurface17
-    100016: polySurface17 1
-    100018: polySurface18
-    100020: polySurface7
-    100022: transform24
-    100024: transform25
-    100026: transform26
-    100028: transform27
-    100030: transform28
-    100032: transform29
-    100034: transform30
-    100036: transform31
     400000: //RootNode
-    400002: pCube2
-    400004: pCube3
-    400006: pCube4
-    400008: pCylinder10
-    400010: pCylinder9
-    400012: polySurface16
-    400014: polySurface17
-    400016: polySurface17 1
-    400018: polySurface18
-    400020: polySurface7
-    400022: transform24
-    400024: transform25
-    400026: transform26
-    400028: transform27
-    400030: transform28
-    400032: transform29
-    400034: transform30
-    400036: transform31
     2300000: //RootNode
-    2300002: pCube4
     3300000: //RootNode
-    3300002: pCube4
-    4300000: pCylinder1
-    4300002: pCube4
-    9500000: //RootNode
+    4300000: pCylinder22
   materials:
     importMaterials: 0
     materialName: 0
@@ -71,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 20
@@ -90,8 +50,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 0
   copyAvatar: 0
