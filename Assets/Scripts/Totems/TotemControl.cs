@@ -16,6 +16,9 @@ public class TotemControl : MonoBehaviour {
 
     [Header("References")]
 	[SerializeField] public Hexagon hexagon;
+	[SerializeField] public AudioClip jumpSound;
+	[SerializeField] public AudioClip landSound;
+	[SerializeField] public AudioClip dieSound;
     Rigidbody rigidbody;
     ParticleSystem particles;
     [Header("Debug")]
@@ -71,6 +74,7 @@ public class TotemControl : MonoBehaviour {
             isGrounded = false;
             rigidbody.AddForce(initForce,ForceMode.Impulse);
 			iTween.ScaleTo(gameObject, new Vector3(1,1.1f,1), 1f);
+			AudioManager.ReproduceSound(jumpSound);
         }
 
         if(jumping && jumpButtonPressed )
@@ -100,7 +104,7 @@ public class TotemControl : MonoBehaviour {
 			this.transform.localScale = Vector3.one;
 			iTween.ScaleFrom(gameObject, new Vector3(1,0.75f,1), 0.5f);
 		}
-
+		AudioManager.ReproduceSound(landSound);
         isGrounded = true;
         jumping = false;
     }
@@ -109,23 +113,7 @@ public class TotemControl : MonoBehaviour {
     private void Dead()
     {
         rigidbody.AddForce( deadForce, ForceMode.Impulse );
+		AudioManager.ReproduceSound(dieSound);
         Destroy( this );
-    }
-
-    IEnumerator JumpRoutine()
-    {
-        rigidbody.velocity = Vector2.zero;
-
-        while (jumpButtonPressed && timer < jumpTime)
-        {
-            //Calculate how far through the jump we are as a percentage
-            //apply the full jump force on the first frame, then apply less force
-            //each consecutive frame
-           
-            yield return null;
-        }
-
-
-        jumping = false;
     }
 }

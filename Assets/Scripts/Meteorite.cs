@@ -31,10 +31,10 @@ public class Meteorite : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		print (other.transform.name);
+		//print (other.transform.name);
 		if ( other.transform.tag == "target") {
-			GameObject explosionClone = Instantiate (explosion, new Vector3(other.transform.position.x, 0, other.transform.position.z), Quaternion.identity) as GameObject;
-			explosionClone.GetComponent<SelfDestroy> ().DestroyMe ();
+			GameObject explosionClone = Instantiate (explosion, new Vector3(other.transform.position.x, 1, other.transform.position.z), Quaternion.identity) as GameObject;
+			//explosionClone.GetComponent<SelfDestroy> ().DestroyMe ();
 			hexas [0].Wave ();
 			hexas [0].Wave ();
 			hexas [0].Wave ();
