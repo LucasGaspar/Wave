@@ -38,6 +38,7 @@ public class Meteorite : MonoBehaviour {
 			hexas [0].Wave ();
 			hexas [0].Wave ();
 			hexas [0].Wave ();
+			CameraShake.MeteorShake();
 //			Hexagon hex = other.GetComponent<Hexagon> ();
 //			hex.Wave ();
 			Destroy (gameObject);

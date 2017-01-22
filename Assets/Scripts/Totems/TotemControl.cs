@@ -70,6 +70,7 @@ public class TotemControl : MonoBehaviour {
             jumping = true;
             isGrounded = false;
             rigidbody.AddForce(initForce,ForceMode.Impulse);
+			iTween.ScaleTo(gameObject, new Vector3(1,1.1f,1), 1f);
         }
 
         if(jumping && jumpButtonPressed )
@@ -84,6 +85,7 @@ public class TotemControl : MonoBehaviour {
             else
             {
                 jumping = false;
+				iTween.ScaleTo(gameObject, new Vector3(1,1f,1), 1f);
             }
         }
     }
@@ -95,6 +97,8 @@ public class TotemControl : MonoBehaviour {
             if( canWave )
                 hexagon.Wave( );
 			particles.Play( );
+			this.transform.localScale = Vector3.one;
+			iTween.ScaleFrom(gameObject, new Vector3(1,0.75f,1), 0.5f);
 		}
 
         isGrounded = true;
@@ -117,10 +121,10 @@ public class TotemControl : MonoBehaviour {
             //Calculate how far through the jump we are as a percentage
             //apply the full jump force on the first frame, then apply less force
             //each consecutive frame
-
            
             yield return null;
         }
+
 
         jumping = false;
     }

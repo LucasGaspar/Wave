@@ -7,14 +7,14 @@ public class Hexagon : MonoBehaviour
 	public Coordinate coordinates;
 	public TextMesh textmesh;
 
-	float initialYPos;
+	//float initialYPos;
 	float elevation = 0.2f;
-	float maxElevation = 0.5f;
+	//float maxElevation = 0.5f;
 
-	void Start()
+	/*void Start()
 	{
 		initialYPos = this.transform.position.y;
-	}
+	}*/
 
 	public void SetCoordinates(int x, int y)
 	{
@@ -78,6 +78,7 @@ public class Hexagon : MonoBehaviour
 	public void Wave()
 	{
 		StartCoroutine(WaveCoroutine());
+		CameraShake.Shake();
 	}
 
 	void OnMouseUpAsButton()
