@@ -10,7 +10,7 @@ public class TotemControl : MonoBehaviour {
     [SerializeField]    float jumpTime = .5f;
     [SerializeField]    Vector3 jumpVector = Vector3.up * 15;
     [SerializeField]    Vector3 initForce = Vector3.up *50;
-
+    [SerializeField]    Vector3 deadForce = Vector3.up  * 30;
     public string buttonName = "4";
 
     [Header("References")]
@@ -31,6 +31,10 @@ public class TotemControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         jumpButtonPressed =  Input.GetButton(buttonName);
+        if(transform.position.y < .15f &&  hexagon.transform.localPosition.y > .15f )
+        {
+            Dead( );
+        }
 	}
 
     void FixedUpdate()
@@ -67,10 +71,17 @@ public class TotemControl : MonoBehaviour {
 			hexagon.Wave( );
 			particles.Play( );
 		}
+
         isGrounded = true;
         jumping = false;
     }
 
+
+    private void Dead()
+    {
+        rigidbody.AddForce( deadForce, ForceMode.Impulse );
+        Destroy( this );
+    }
 
     IEnumerator JumpRoutine()
     {

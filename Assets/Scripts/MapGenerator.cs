@@ -12,9 +12,12 @@ public class MapGenerator : MonoBehaviour
 	public int radius;
 	public float pieceSize;
 
+    public float Y;
+
     [ContextMenu("Generate")]
 	void Start ()
 	{
+        Y = transform.position.y;
 		StartCoroutine(GenerateHexagonalMap());
 	}
 
@@ -96,7 +99,7 @@ public class MapGenerator : MonoBehaviour
 
 	Vector3 Vector2ToVector3(Vector2 vector2)
 	{
-		return new Vector3 (vector2.x, -3, vector2.y);
+		return new Vector3 (vector2.x, Y, vector2.y);
 	}
 
 	void CreateHexagon(Vector2 position, int coordinatesX, int coordinatesY)
@@ -109,9 +112,9 @@ public class MapGenerator : MonoBehaviour
 
 	void CreatePlayer(Hexagon hexagon, int i)
 	{
-		TotemControl totem = ((GameObject) Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,3,0), Quaternion.identity)).GetComponent<TotemControl>();
+		TotemControl totem = ((GameObject) Instantiate(totemPrefab, hexagon.transform.position + new Vector3(0,6,0), Quaternion.identity)).GetComponent<TotemControl>();
 		totem.buttonName = i.ToString();
 		totem.hexagon = hexagon;
-		hexagon.GetComponent<Collider>().enabled = true;
+	
 	}
 }

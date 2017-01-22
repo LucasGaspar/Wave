@@ -60,7 +60,7 @@ public class Hexagon : MonoBehaviour
 
 	IEnumerator WaveCoroutine()
 	{
-		int i = 0;
+		int i = 2;
 		List<Hexagon> radiusList;
 		do
 		{
