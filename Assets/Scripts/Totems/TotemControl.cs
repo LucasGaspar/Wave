@@ -85,7 +85,7 @@ public class TotemControl : MonoBehaviour {
             else
             {
                 jumping = false;
-				iTween.ScaleTo(gameObject, new Vector3(1,1f,1), 1f);
+				iTween.ScaleTo(gameObject, new Vector3(1,1,1), 1f);
             }
         }
     }
