@@ -31,6 +31,7 @@ public class EndScreen : MonoBehaviour {
 
         if(showWinner)
         {
+			GameObject.Find ("ScoreManager").GetComponent<ScoreManager> ().UpdateScores ();
             winnerText.gameObject.SetActive( true );
             Invoke( "Restart", 4 );
             showWinner = false;
