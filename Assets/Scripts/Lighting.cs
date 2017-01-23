@@ -19,7 +19,7 @@ public class Lighting : MonoBehaviour {
 	void Start () {
 		transform.position = Vector3.zero;
 		hour = System.DateTime.Now.Hour;
-		hour = 8;
+		//hour = 8;
 		int angle = hour * 15;
 		angle -= 90;
 		gameObject.transform.localEulerAngles = new Vector3 (angle, 0, 0);

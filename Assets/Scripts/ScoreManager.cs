@@ -56,7 +56,6 @@ public class ScoreManager : MonoBehaviour {
 		totems = GameObject.FindGameObjectsWithTag ("Totem");
 		if (totems.Length == 1) {
 			string winner = totems [0].GetComponent<TotemControl> ().buttonName;
-			print (winner);
 			switch (winner) {
 			case "1":
 				p1Score++;
