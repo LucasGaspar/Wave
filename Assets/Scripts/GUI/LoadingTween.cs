@@ -9,15 +9,20 @@ public class LoadingTween : MonoBehaviour {
     public float time;
 	// Use this for initialization
 	void Start () {
-        Hashtable hash = iTween.Hash("position",fromPosition, "time", time, "delay", delay ,"oncomplete", "OnComplete");
+        Hashtable hash = iTween.Hash("position",fromPosition, "time", time, "delay", delay ,"onstart", "OnComplete");
         iTween.MoveFrom( this.gameObject, hash );
 	}
 	
 
     void OnComplete()
     {
-        var particles =  GetComponentInChildren<ParticleSystem>();
+        Invoke( "Particles", .5f );
+        
+    }
+    void Particles()
+    {
+        var particles =  GetComponentInChildren<ParticleSystem>(true);
         if( particles )
-            particles.Play( );
+            particles.gameObject.SetActive( true );
     }
 }
