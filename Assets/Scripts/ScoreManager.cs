@@ -29,12 +29,6 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void UpdateKing(){
-		print ("1 " + p1Score);
-		print ("2 " + p2Score);
-		print ("3 " + p3Score);
-		print ("4 " + p4Score);
-		print ("5 " + p5Score);
-		print ("6 " + p6Score);
 
 		if (p1Score > p2Score && p1Score > p3Score && p1Score > p4Score && p1Score > p5Score && p1Score > p6Score) {
 			currentKing = "1";
